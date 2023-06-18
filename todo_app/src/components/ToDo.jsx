@@ -7,12 +7,21 @@ export default function ToDo() {
   const [todos, setTodos] = useState([]);
   const [todo, setTodo] = useState("");
   const addTask = () => {
-    setTodos([...todos, todo]);
-    setTodo("");
+    if (todo !== "") {
+      setTodos([...todos, todo]);
+      setTodo("");
+    }
   };
   return (
     <div className="todo">
-      <div className="search-bar ">
+      <div
+        className="search-bar"
+        onKeyDown={(ev) => {
+          if (ev.keyCode == 13) {
+            addTask(todo);
+          }
+        }}
+      >
         <input
           type="text"
           placeholder="Enter the task"
