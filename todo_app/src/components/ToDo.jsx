@@ -1,7 +1,9 @@
 import React from "react";
-import { useState } from "react";
+import { useState, createContext } from "react";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import Task from "./Task";
+
+export const TaskContext = createContext("");
 
 export default function ToDo() {
   const [todos, setTodos] = useState([]);
@@ -36,7 +38,9 @@ export default function ToDo() {
       </div>
       <div className="tasks">
         {todos.map((task, index) => (
-          <Task key={index} task={task} />
+          <TaskContext.Provider value={task}>
+            <Task key={index} />
+          </TaskContext.Provider>
         ))}
       </div>
     </div>

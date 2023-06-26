@@ -1,11 +1,13 @@
 import React from "react";
 import { MdDeleteForever } from "react-icons/md";
 import { AiOutlineCheck } from "react-icons/ai";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { TaskContext } from "./ToDo";
 
-export default function Task({ task }) {
+export default function Task() {
   const [taskComplete, setTaskComplete] = useState(false);
   const [taskVisible, setTaskVisible] = useState(true);
+  const task = useContext(TaskContext);
   return (
     <div className="task-form">
       {taskVisible === true ? (
