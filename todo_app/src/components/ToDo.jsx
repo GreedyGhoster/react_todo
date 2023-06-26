@@ -38,8 +38,8 @@ export default function ToDo() {
       </div>
       <div className="tasks">
         {todos.map((task, index) => (
-          <TaskContext.Provider value={task}>
-            <Task key={index} />
+          <TaskContext.Provider key={index} value={task}>
+            <Task />
           </TaskContext.Provider>
         ))}
       </div>
