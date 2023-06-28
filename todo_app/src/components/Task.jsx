@@ -9,28 +9,30 @@ export default function Task() {
   const [taskVisible, setTaskVisible] = useState(true);
   const task = useContext(TaskContext);
   return (
-    <div className="task-form">
+    <>
       {taskVisible === true ? (
-        <div className={taskComplete ? "task-complete" : "task"}>
-          <div className={taskComplete ? "task-do-complete" : "task-do"}>
-            <h3
-              className={
-                taskComplete ? "task-do-text-complete" : "task-do-text"
-              }
-            >
-              {task}
-            </h3>
+        <div className="task-form">
+          <div className={taskComplete ? "task-complete" : "task"}>
+            <div className={taskComplete ? "task-do-complete" : "task-do"}>
+              <h3
+                className={
+                  taskComplete ? "task-do-text-complete" : "task-do-text"
+                }
+              >
+                {task}
+              </h3>
+            </div>
+            <AiOutlineCheck
+              onClick={() => setTaskComplete(!taskComplete)}
+              className="task-complete-icon"
+            />
+            <MdDeleteForever
+              className="task-delete-icon"
+              onClick={() => setTaskVisible(!taskVisible)}
+            />
           </div>
-          <AiOutlineCheck
-            onClick={() => setTaskComplete(!taskComplete)}
-            className="task-complete-icon"
-          />
-          <MdDeleteForever
-            className="task-delete-icon"
-            onClick={() => setTaskVisible(!taskVisible)}
-          />
         </div>
       ) : null}
-    </div>
+    </>
   );
 }
